@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import Body from './Body';
+import KegControl from './KegControl';
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <>
       <div className="app">
         <Header />
-        <Body />
+        <KegControl />
         <Footer />
       </div>
     </>
