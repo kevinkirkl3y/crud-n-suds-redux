@@ -12,4 +12,22 @@ describe('crud-n-suds actions', () => {
       type: 'TOGGLE_FORM'
     });
   });
+  it('addKeg shoud create an ADD_KEG action', () => {
+    expect(actions.addKeg({
+      name: 'HTMLager',
+      brand: 'CSS Brewing',
+      alcCont: '4.5',
+      price: '6.00',
+      quantity: 4,
+      id: 1
+    }
+    )).toEqual({
+      name: 'HTMLager',
+      brand: 'CSS Brewing',
+      alcCont: '4.5',
+      price: '6.00',
+      quantity: 4,
+      id: 1
+    });
+  });
 });
