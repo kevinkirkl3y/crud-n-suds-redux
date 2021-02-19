@@ -45,7 +45,7 @@ function EditKegForm(props){
         name='quantity'
         defaultValue={keg.quantity}
         placeholder='Quantity'/>
-        <button type='submit'>Tap Keg</button>
+        <button type='submit'>Update Tapped Keg</button>
       </form>
     </>
   )
