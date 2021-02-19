@@ -1,0 +1,36 @@
+/* Header */
+.header {
+  background-image: url('./img/beerPour.jpg');
+  width: auto;
+  height: auto;
+  padding: 100px;
+  color: white;
+}
+/* Footer */
+.screen {
+  background: wheat;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+Footer {
+  
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: wheat;
+
+}
+/* .app {
+  margin-left: 15%;
+  margin-right: 15%;
+} */
+Body{
+
+}
+
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
