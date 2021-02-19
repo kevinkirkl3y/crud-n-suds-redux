@@ -7,7 +7,7 @@ function KegInventory(props) {
   return(
     <>
       <hr/>
-      {props.kegInventory.map((keg) =>
+      {Object.values(props.kegInventory).map((keg) =>
         <Keg 
         whenKegClicked = {props.onKegSelection}
         name={keg.name}
@@ -23,7 +23,7 @@ function KegInventory(props) {
   )
 }
 KegInventory.propTypes = {
-  kegInventory: PropTypes.array,
+  kegInventory: PropTypes.object,
   onKegSelection: PropTypes.func
 };
 export default KegInventory;

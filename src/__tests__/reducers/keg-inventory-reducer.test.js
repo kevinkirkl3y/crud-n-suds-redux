@@ -8,6 +8,7 @@ describe('kegInventoryReducer', () => {
       brand: 'CSS Brewing',
       alcCont: '4.5',
       price: '6.00',
+      quantity: 4,
       id: 1
     },
     2: {
@@ -15,6 +16,7 @@ describe('kegInventoryReducer', () => {
       brand: 'CSS Brewing',
       alcCont: '7.2',
       price: '7.00',
+      quantity: 2,
       id: 2
     }
   }
@@ -24,6 +26,7 @@ describe('kegInventoryReducer', () => {
       brand: 'CSS Brewing',
       alcCont: '4.5',
       price: '6.00',
+      quantity: 5,
       id: 1
     }
   }
@@ -31,13 +34,14 @@ describe('kegInventoryReducer', () => {
     expect(kegInventoryReducer({}, {type: null})).toEqual({});
   });
   test('Should successfully add new keg data to kegInventory', () => {
-    const {name, brand, alcCont, price, id} = kegInfo;
+    const {name, brand, alcCont, price, quantity, id} = kegInfo;
     action = {
       type: 'ADD_KEG',
       name,
       brand,
       alcCont,
       price,
+      quantity,
       id
     }
     expect(kegInventoryReducer({}, action)).toEqual({
@@ -46,6 +50,7 @@ describe('kegInventoryReducer', () => {
         brand,
         alcCont,
         price,
+        quantity,
         id
       }
     });
@@ -61,6 +66,7 @@ describe('kegInventoryReducer', () => {
         brand: 'CSS Brewing',
         alcCont: '7.2',
         price: '7.00',
+        quantity: 2,
         id: 2
       }
     });
