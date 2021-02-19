@@ -4,10 +4,11 @@ import './index.css';
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
 import { createStore } from 'redux';
-import reducer from './reducers/keg-inventory-reducer';
+import rootReducer from './reducers/keg-inventory-reducer';
 import { Provider } from 'react-redux'
 
-const store = createStore(reducer);
+
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store = {store}>

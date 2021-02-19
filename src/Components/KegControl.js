@@ -12,7 +12,6 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       // state slices
-      formVisibleOnPage: false,
       selectedKeg: null,
       editing: false
     };
@@ -22,15 +21,15 @@ class KegControl extends React.Component {
   handleClick = () => {
     if (this.state.selectedKeg != null){
       this.setState({
-        formVisibleOnPage: false,
         selectedKeg: null,
         editing:false
       });
     }else{
-      this.setState(prevState => ({
-        
-        formVisibleOnPage: !prevState.formVisibleOnPage
-      }));
+      const { dispatch } = this.props;
+      const action = {
+        type: 'TOGGLE_FORM'
+      }
+      dispatch(action);
     }
   }
 
@@ -47,9 +46,11 @@ class KegControl extends React.Component {
       quantity
     }
     dispatch(action);
-    this.setState({
-      formVisibleOnPage: false
-    });
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
+    
   }
 
   handleChangingSelectedKeg = (id) => {
@@ -128,7 +129,7 @@ class KegControl extends React.Component {
       onClickingDelete = {this.handleDeletingKeg}
       />
       buttonText = "Return to Tap List";
-    }else if (this.state.formVisibleOnPage) {
+    }else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm 
       onNewKegTapping={this.handleAddingNewKegToInventory}/>;
       buttonText = "Return to Tap List";
@@ -150,11 +151,13 @@ class KegControl extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    kegInventory: state
+    kegInventory: state.kegInventory,
+    formVisibleOnPage: state.formVisibleOnPage
   }
 }
 KegControl = connect(mapStateToProps)(KegControl);
 KegControl.propTypes = {
-  kegInventory: PropTypes.object
+  kegInventory: PropTypes.object,
+  formVisibleOnPage: PropTypes.bool
 }
 export default KegControl;
