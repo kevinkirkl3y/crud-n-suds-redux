@@ -22,6 +22,7 @@ describe('crud-n-suds actions', () => {
       id: 1
     }
     )).toEqual({
+      type: 'ADD_KEG',
       name: 'HTMLager',
       brand: 'CSS Brewing',
       alcCont: '4.5',
