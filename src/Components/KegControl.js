@@ -3,6 +3,8 @@ import KegInventory from './KegInventory';
 import NewKegForm from './NewKegForm';
 import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
+import { connect } from 'react-redux';
+
 
 class KegControl extends React.Component {
   constructor(props) {
@@ -10,7 +12,6 @@ class KegControl extends React.Component {
     this.state = {
       // state slices
       formVisibleOnPage: false,
-      kegInventory: [],
       selectedKeg: null,
       editing: false
     };
@@ -33,9 +34,18 @@ class KegControl extends React.Component {
   }
 
   handleAddingNewKegToInventory = (newKeg) => {
-    const newKegInventory = this.state.kegInventory.concat(newKeg);
+    const { dispatch } = this.props;
+    const { id, name, brand, alcCont, price} = newKeg;
+    const action = {
+      type: 'ADD_KEG',
+      id,
+      name,
+      brand,
+      alcCont,
+      price,
+    }
+    dispatch(action);
     this.setState({
-      kegInventory: newKegInventory,
       formVisibleOnPage: false
     });
   }
@@ -58,20 +68,30 @@ class KegControl extends React.Component {
     this.setState({editing:true});
   }
   handleEditingKegInInventory = (kegToEdit) => {
-    const editedKegInventory = this.state.kegInventory
-      .filter(keg => keg.id !== this.state.selectedKeg.id)
-      .concat(kegToEdit);
+    const { dispatch } = this.props;
+    const { id, name, brand, alcCont, price} = kegToEdit;
+    const action = {
+      type: 'ADD_KEG',
+      id,
+      name,
+      brand,
+      alcCont,
+      price,
+    }
+    dispatch(action);
     this.setState({
-      kegInventory: editedKegInventory,
       editing: false,
-      selectedKeg: null
-    })
+      formVisibleOnPage: false
+    });
   }
   handleDeletingKeg = (id) => {
-    const newKegInventory = this.state.kegInventory
-      .filter(keg => keg.id !== id);
+    const { dispatch } = this.props;
+    const action = {
+      type: 'DELETE_KEG',
+      id
+    }
+    dispatch(action);
     this.setState({
-      kegInventory: newKegInventory,
       selectedKeg: null
     });
   }
@@ -114,6 +134,6 @@ class KegControl extends React.Component {
       </>
     )
   }
-
+KegControl = connect()(KegControl);
 }
 export default KegControl;
