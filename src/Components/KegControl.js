@@ -5,6 +5,8 @@ import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as a from '../actions/index';
+
 
 
 class KegControl extends React.Component {
@@ -15,7 +17,6 @@ class KegControl extends React.Component {
       selectedKeg: null,
       editing: false
     };
-    this.handleClick = this.handleClick.bind(this);
   }
   //Handlers
   handleClick = () => {
@@ -26,55 +27,24 @@ class KegControl extends React.Component {
       });
     }else{
       const { dispatch } = this.props;
-      const action = {
-        type: 'TOGGLE_FORM'
-      }
+      const action = a.toggleForm();
       dispatch(action);
     }
   }
-
+    
   handleAddingNewKegToInventory = (newKeg) => {
     const { dispatch } = this.props;
-    const { id, name, brand, alcCont, price, quantity} = newKeg;
-    const action = {
-      type: 'ADD_KEG',
-      id,
-      name,
-      brand,
-      alcCont,
-      price,
-      quantity
-    }
+    const action = a.addKeg(newKeg);
     dispatch(action);
-    const action2 = {
-      type: 'TOGGLE_FORM'
-    }
+    const action2 = a.toggleForm();
     dispatch(action2);
     
   }
 
   handleChangingSelectedKeg = (id) => {
-    const selectedKeg = this.props.kegInventory[id]
+    const selectedKeg = this.props.kegInventory[id];
     this.setState({
       selectedKeg: selectedKeg
-    });
-  }
-  handleChangeKegQuantityClick = (kegToEdit) => {
-    const { dispatch } = this.props;
-    const { id, name, brand, alcCont, price, quantity} = kegToEdit;
-    const action = {
-      type: 'ADD_KEG',
-      id,
-      name,
-      brand,
-      alcCont,
-      price,
-      quantity
-    }
-    dispatch(action);
-    this.setState({
-      editing: false,
-      formVisibleOnPage: false
     });
   }
   handleEditClick = () => {
@@ -82,33 +52,33 @@ class KegControl extends React.Component {
   }
   handleEditingKegInInventory = (kegToEdit) => {
     const { dispatch } = this.props;
-    const { id, name, brand, alcCont, price} = kegToEdit;
-    const action = {
-      type: 'ADD_KEG',
-      id,
-      name,
-      brand,
-      alcCont,
-      price,
-    }
+    const action = a.addKeg(kegToEdit)
     dispatch(action);
     this.setState({
       editing: false,
-      formVisibleOnPage: false
+      selectedKeg: null
+    });
+  }
+  handleChangeKegQuantityClick = (kegToEdit) => {
+    const { dispatch } = this.props;
+    const action = a.addKeg(kegToEdit)
+    dispatch(action);
+    const action2 = a.toggleForm()
+    dispatch(action2)
+    this.setState({
+      editing: false,
     });
   }
   handleDeletingKeg = (id) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_KEG',
-      id
-    }
+    const action = a.deleteKeg(id);
     dispatch(action);
     this.setState({
       selectedKeg: null
     });
   }
   render(){
+    console.log(this.props.formVisibleOnPage)
     //conditional requirements
     let currentlyVisibleState = null;
     let buttonText = null;

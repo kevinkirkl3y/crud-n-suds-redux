@@ -7,6 +7,7 @@ function KegInventory(props) {
   return(
     <>
       <hr/>
+      {console.log(props.kegInventory)}
       {Object.values(props.kegInventory).map((keg) =>
         <Keg 
         whenKegClicked = {props.onKegSelection}

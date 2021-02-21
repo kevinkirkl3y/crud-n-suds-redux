@@ -2,6 +2,7 @@ import rootReducer from '../../reducers/index';
 import { createStore } from 'redux';
 import kegInventoryReducer from '../../reducers/keg-inventory-reducer';
 import formVisibleReducer from '../../reducers/form-visible-reducer';
+import * as c from '../../actions/ActionTypes'
 
 let store = createStore(rootReducer);
 
@@ -33,9 +34,9 @@ describe("rootReducer", () => {
     store.dispatch(action);
     expect(store.getState().kegInventory).toEqual(kegInventoryReducer(undefined, action));
   });
-  test('Check that TOGGLE_FORM action works fro formVisibleReducer and root reducer', () => {
+  test('Check that TOGGLE_FORM action works for formVisibleReducer and root reducer', () => {
     const action = {
-      type: 'TOGGLE_FORM'
+      type: 'TOGGLE_FORM',
     }
     store.dispatch(action);
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
