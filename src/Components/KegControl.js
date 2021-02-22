@@ -78,7 +78,6 @@ class KegControl extends React.Component {
     });
   }
   render(){
-    console.log(this.props.formVisibleOnPage)
     //conditional requirements
     let currentlyVisibleState = null;
     let buttonText = null;

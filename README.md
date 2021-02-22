@@ -1,11 +1,11 @@
-# CRUD 'N' Suds
+# CRUD 'N' Suds-Redux
 
-### "React Fundamentals Project for Epicodus 2.12.21"
+### "React with Redux Project for Epicodus 2.19.21"
 
 #### by Kevin Kirkley
 
 ## Description
-CRUD N Suds is the newest programming-themed bar in the Portland Area so this project was developed to help the crew manage their ever-changing taplist and track their inventory as pints are sold. This program has full CRUD functionality with the ability to Create, Read, Update and Delete kegs within their system.
+CRUD N Suds is the newest programming-themed bar in the Portland Area so this project was developed to help the crew manage their ever-changing taplist and track their inventory as pints are sold. This program has full CRUD functionality with the ability to Create, Read, Update and Delete kegs within their system. This program also uses Redux manage state throughout the App. 
 
 ## User Stories
 * As a user, I want to see a list/menu of all available kegs. For each keg, I want to see its name, brand, price and alcoholContent.
@@ -42,6 +42,11 @@ git clone https://github.com/kevinkirkl3y/crud-n-suds.git
 3. Open within your text editor and navigate to the `crud-n-suds` folder and run `npm install` in your console to install all project dependencies.
 4. Run `npm start` in your console to fire up the program and then open in your browser.
 
+### `npm test`
+
+By running `npm test` the program will use Jest to test state handling performed by the reducers. These tests also check that action type constants are working correctly. 
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -54,7 +59,10 @@ You will also see any lint errors in the console.
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.a
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+
+
 
 ## Known Bugs / Issues
 
@@ -75,6 +83,9 @@ _Contact Kevin Kirkley at [kevinmkirkley@gmail.com](mailto:kevinmkirkley@gmail.c
 * CSS
 * Node.js
 * Google Fonts
+* Redux
+* Jest
+* Babel
 
 </details>
 
